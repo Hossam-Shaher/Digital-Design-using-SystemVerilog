@@ -1,5 +1,5 @@
 # Digital Design using SystemVerilog
-Design and Verification of Basic Combinational and Sequential Logic Circuits using SystemVerilog.
+Design and verification (flat testbenches) of basic combinational and sequential logic circuits using SystemVerilog.
 
 ## Contents of This Repository
 
