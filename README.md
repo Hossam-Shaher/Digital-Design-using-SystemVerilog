@@ -1,19 +1,32 @@
-# Digital-Design-using-SystemVerilog
-Design and Verification of Basic Combinational and Sequential Logic Circuits
+# Digital Design using SystemVerilog
+Design and Verification of Basic Combinational and Sequential Logic Circuits using SystemVerilog.
 
-Contents of this repository:
+## Contents of This Repository
 
-Part 1: Combinational Logic Design 
- Multiplexers 
- Decoders 
-Part 2:  Sequential Logic Design
-Latches and Flip-Flops (and registers)
-Finite State Machines 
-Part 3:  Digital Building Blocks 
-Arithmetic Circuits (HA, FA, ALU, shifter)
-Sequential Building Blocks (Counters. shift registers)
-Memory Arrays (Register file, rom, ram)
+### Part 1: Combinational Logic Design
 
-**References:**
-[1] "Digital Design and Computer Architecture", a textbook by Sarah L. Harris and David Harris.
-[2] "Digital Circuit Design Using Verilog", a course by Annas Salah Eddin.
+Multiplexers, decoders, and priority encoders.
+
+### Part 2: Sequential Logic Design
+
+Latch, flip-flops, register, and finite state machines (FSM).
+
+### Part 3: Digital Building Blocks 
+
+**1. Arithmetic Circuits**
+
+Half adder (HA), full adder (FA), ripple carry adder/subtractor, arithmetic logic unit (ALU), and shifter.
+
+**2. Sequential Building Blocks**
+
+Counters, digitally controlled oscillator (DCO), and shift registers.
+
+**3. Memory Arrays**
+
+Register file, RAM, ROM, and FIFO.
+
+## References
+
+[1] "Digital Design and Computer Architecture", a textbook *by* Sarah L. Harris and David Harris.
+
+[2] "[Digital Circuit Design Using Verilog](https://www.youtube.com/playlist?list=PL-iIOnHwN7NXw01eBDR7wI8KzGK4mu8Sr)", a course *by* Anas Salah Eddin.
