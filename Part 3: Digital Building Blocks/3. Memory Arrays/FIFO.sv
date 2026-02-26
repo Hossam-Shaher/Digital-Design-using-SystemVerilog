@@ -1,8 +1,9 @@
+// Code your design here
 //2**N-word (depth) × M-bit (width) FIFO buffer
 //Inputs:
 //	clk, reset_n, re (read enable), we (write enable), wd (write data)
 //Outputs:
-//	rd (read data), full (FIFO is full flag), emppty (FIFO is empty flag)
+//	rd (read data), full ("FIFO is full" flag), emppty ("FIFO is empty" flag)
 //Important internal signals:
 //	w_ptr (address of the word at which the next write operation will occur)
 //	r_ptr (address of the word at which the next read operation will occur)
@@ -14,7 +15,7 @@
 module FIFO 
   #(parameter N = 8, M = 4) (
     input wire logic 		clk, 
-                        	reset_n, 	//sync
+                        	reset_n, 	//synchronous reset
                         	re, 		//read enable
                         	we, 		//write enable
               logic [M-1:0] wd, 		//write data
@@ -26,31 +27,30 @@ module FIFO
   
   logic [M-1:0] fifo [2**N];			//Note that [2**N] is equivalent to [0 : (2**N)-1]
   
-  logic [N:0] w_ptr = 0, r_ptr = 0;
+  logic [N:0] w_ptr, r_ptr;
   
-  always @(posedge clk)
+  always_ff @(posedge clk)
     if(!reset_n) begin
-      empty <= 1;
-      full 	<= 0;
-      w_ptr <= 0; 
-      r_ptr	<= 0; 
+      empty = 1;
+      full 	= 0;
+      w_ptr = 0; 
+      r_ptr	= 0; 
     end
-  
-  always @(posedge clk)
-    if(we && !full) begin
-      fifo[w_ptr] <= wd;
-      w_ptr++;
+    else begin
+      //write data
+      if(we && !full) begin
+        fifo[w_ptr] = wd;
+        w_ptr++;
+      end
+      //read data
+      if(re && !empty) begin
+        rd = fifo[r_ptr];
+        r_ptr++;
+      end
+      //empty flag
+      empty = (r_ptr === w_ptr);
+      //full flag
+      full 	= (r_ptr[N-1:0] === w_ptr[N-1:0]) && (r_ptr[N] !== w_ptr[N]);
     end
-  
-  always @(posedge clk)
-    if(re && !empty) begin
-      rd <= fifo[r_ptr];
-      r_ptr++;
-    end
-  
-  always@(*) begin
-    empty 	= (r_ptr === w_ptr);
-    full 	= (r_ptr[N-1:0] === w_ptr[N-1:0]) && (r_ptr[N] !== w_ptr[N]);
-  end
-
+ 
 endmodule: FIFO
