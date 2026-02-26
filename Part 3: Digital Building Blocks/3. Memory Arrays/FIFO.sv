@@ -17,11 +17,11 @@ module FIFO
                         	reset_n, 	//sync
                         	re, 		//read enable
                         	we, 		//write enable
-            	logic [N:0] wd, 		//write data
+              logic [M-1:0] wd, 		//write data
 
     output var logic		empty,
     						full,
-    			logic [N:0] rd 			//read data
+              logic [M-1:0] rd 			//read data
   );
   
   logic [M-1:0] fifo [2**N];			//Note that [2**N] is equivalent to [0 : (2**N)-1]
