@@ -36,12 +36,13 @@ module ROM_v2(
     $readmemb("rom_contents.mem", rom);
   
   always_ff @(posedge clk)
-    rd1 = rom[addr1];
+    rd1 <= rom[addr1];
 /*
   assign rd1 = rom[addr1];		//read combinationally (async)
 */
   
 endmodule: ROM_v2
+
 
 
   
